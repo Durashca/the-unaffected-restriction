@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://hpeh8myt3fed"]
+
+[ext_resource type="Script" uid="uid://ckjqdq7agj0g1" path="res://src/scripts/player/player.gd" id="1_swhsd"]
+[ext_resource type="Texture2D" uid="uid://dt5smb8v35b6h" path="res://icon.svg" id="2_qopur"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qopur"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_swhsd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_swhsd"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" unique_id=1239790571]
+script = ExtResource("1_swhsd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=280222786]
+shape = SubResource("CapsuleShape2D_qopur")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1160012179]
+position = Vector2(4.7683716e-07, 1.0000024)
+scale = Vector2(18, 14.000001)
+mesh = SubResource("CapsuleMesh_swhsd")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1375575571]
+zoom = Vector2(3.88, 3.88)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1646295675]
+sprite_frames = SubResource("SpriteFrames_swhsd")
+animation = &"jump"
+
+[node name="UI" type="Node2D" parent="." unique_id=226542353]
+z_index = 2
+
+[node name="Left" type="TouchScreenButton" parent="UI" unique_id=1266905578]
+position = Vector2(-145, 14.000002)
+scale = Vector2(0.32000107, 0.16000009)
+texture_normal = ExtResource("2_qopur")
+action = "ui_left"
+
+[node name="Right" type="TouchScreenButton" parent="UI" unique_id=1560824874]
+position = Vector2(-90.000015, 14)
+scale = Vector2(0.32000107, 0.16000009)
+texture_normal = ExtResource("2_qopur")
+action = "ui_right"
+
+[node name="Jump" type="TouchScreenButton" parent="UI" unique_id=1577819859]
+position = Vector2(85, 14.000002)
+scale = Vector2(0.32000107, 0.16000009)
+texture_normal = ExtResource("2_qopur")
+action = "ui_accept"
